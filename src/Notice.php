@@ -24,6 +24,8 @@ class Notice
         //     ]
         // ];
         $api = new Api();
+        $api->setHookurl($data['hook_url']);
+        unset($data['hook_url']);
         $api->setParams($data);
         return $api->result();
     }
