@@ -1,0 +1,17 @@
+{
+    "name": "onesez/dingtalk-exception",
+    "description": "基于TP5的程序异常钉钉通知",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wending",
+            "email": "postmaster@g000.cn"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Onesez\\DingtalkException\\": "src/"
+        }
+    },
+    "require": {}
+}
