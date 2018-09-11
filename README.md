@@ -43,13 +43,13 @@ class Http extends Handle
                 'content' => "项目名称：{$app_name}\n错误码：{$e->getCode()}\n错误消息：{$e->getMessage()}\n错误文件：{$e->getFile()}",
             ],
             'at' => [
-                'atMobiles' => '17758584001', //通知到指定人手机号
+                'atMobiles' => '17758584001', //通知到你自己的手机号
                 'isAtAll'=> true,
             ],
         ];
         // 这个可以使用队列，否则会引起效率低下
         Notice::send($data);
-        
+
         //TODO::开发者对异常的操作
         //可以在此交由系统处理
         return parent::render($e);
