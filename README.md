@@ -21,15 +21,17 @@ class Http extends Handle
 {
     public function render(Exception $e)
     {
-        // // 参数验证错误
+        // 参数验证错误
         // if ($e instanceof ValidateException) {
         //     return json($e->getError(), 422);
         // }
 
-        // // 请求异常
-        // if ($e instanceof HttpException && request()->isAjax()) {
-        //     return response($e->getMessage(), $e->getStatusCode());
-        // }
+        // 获得错误状态码
+        if ($e instanceof HttpException) {
+          $code = $e->getStatusCode();
+        } else {
+          $code = '500';
+        }
 
         // Notice::catch($e->getMessage());
 
@@ -40,7 +42,7 @@ class Http extends Handle
             'hook_url' => 'https://oapi.dingtalk.com/robot/send?access_token=56a48bae0978208060933c2d5e8bfd36b2a0b91663f6f0d0b74baafe5d5d8ec1',
             'msgtype' => 'text',
             'text' => [
-                'content' => "项目名称：{$app_name}\n错误码：{$e->getCode()}\n错误消息：{$e->getMessage()}\n错误文件：{$e->getFile()}",
+                'content' => "项目名称：{$app_name}\n错误码：{$code}\n错误消息：{$e->getMessage()}\n错误文件：{$e->getFile()}",
             ],
             'at' => [
                 'atMobiles' => '17758584001', //通知到你自己的手机号
